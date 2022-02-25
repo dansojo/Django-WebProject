@@ -1,7 +1,31 @@
 from django.db import models
-from product.models import ProductColor, ProductSize, Category
 
 # Create your models here.
+
+
+class Category(models.Model):
+    # 카테고리 id에 맞춰서 중분류 명을 배분.
+    c_category = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.c_category
+
+
+class ProductColor(models.Model):
+    # id에 맞춰서 컬러를 배분.
+    c_color = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.c_color
+
+
+class ProductSize(models.Model):
+    # id에 맞춰서 사이즈를 배분
+    s_size = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.s_size
+
 
 class Product(models.Model):
     p_name = models.CharField(max_length=15)  #이름
@@ -17,15 +41,7 @@ class Product(models.Model):
     p_size = models.ForeignKey(ProductSize, on_delete=models.CASCADE)       # 사이즈
     p_register_date = models.DateTimeField(auto_now=True)      #등록일
 
-class ProductColor(models.Model):
-    # id에 맞춰서 컬러를 배분.
-    c_color = models.CharField(max_length=20)
+    def __str__(self):
+        return self.p_name
 
-class ProductSize(models.Model):
-    # id에 맞춰서 사이즈를 배분
-    s_size = models.CharField(max_length=20)
-
-class Category(models.Model):
-    # 카테고리 id에 맞춰서 중분류 명을 배분.
-    c_category = models.CharField(max_length=20)
 
