@@ -1,7 +1,7 @@
 from django.contrib.auth import logout as django_logout, \
     login as django_login, authenticate
 from django.shortcuts import render, redirect
-from common.forms import UserForm, LoginForm
+from users.forms import UserForm, LoginForm
 from .models import Member
 from django.http import HttpResponse
 
